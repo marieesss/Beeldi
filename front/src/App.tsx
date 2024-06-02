@@ -1,8 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import { database } from './data/firebase/firebase';
 function App() {
+
+  const equipmentsRef = database.ref('Equipments'); 
+  console.log(equipmentsRef)
+
+    // Récupérer toutes les données une seule fois
+equipmentsRef.once('value', (snapshot) => {
+  // La fonction de rappel sera appelée une fois que toutes les données seront récupérées
+  const data = snapshot.val();
+  console.log(data);
+});
+
+
   return (
     <div className="App">
       <header className="App-header">
