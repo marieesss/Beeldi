@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  react-app:
+    build: ./front
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - ./front/.env
+
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./migrations/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./equipments.csv:/var/lib/mysql-files/equipments.csv
+      - ./checkpoints.csv:/var/lib/mysql-files/checkpoints.csv
+    
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
