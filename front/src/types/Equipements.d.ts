@@ -1,3 +1,4 @@
+import { Checkpoint } from "./Checkpoints";
 export interface Equipment {
     id: string;
     name: string;
@@ -14,3 +15,9 @@ export interface Equipment {
     notes: string;
     nbFaults: number;
   }
+
+  export interface EquipmentDetails extends Equipment {
+    checkpoints?: Checkpoint[];
+  }
+export { Checkpoint };
+
