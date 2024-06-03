@@ -2,6 +2,7 @@ import { database } from "../firebase/firebase";
 
 const EquipementsService = () => {
   const getEquipments = async () => {
+    try {    
     const equipmentsRef = database.ref('Equipments');
     const snapshot = await equipmentsRef.get();
 
@@ -11,6 +12,9 @@ const EquipementsService = () => {
       return equipmentsArray;
     } else {
       return [];
+    }
+    } catch (error) {
+      throw new Error('Failed to fetch equipments');
     }
   };
 
