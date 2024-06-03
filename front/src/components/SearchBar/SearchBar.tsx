@@ -14,7 +14,7 @@ const SearchBar = ({
           const target = e.target as HTMLInputElement;
           handleValueChange(target);
         }}
-        label="Enter a city name"
+        label="Enter a Name"
         variant="outlined"
         placeholder="Search..."
         size="small"
