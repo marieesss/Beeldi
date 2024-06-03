@@ -1,7 +1,6 @@
-
 export interface Checkpoint {
-    equipmentKey: string;
-    fault : string;
-    name : string;
-    recommandation : string;
-  }
+  equipmentKey: string;
+  fault: string;
+  name: string;
+  recommandation: string;
+}

@@ -1,1 +1,1 @@
-export type RenderOption = 'DataGrid' | 'List';
+export type RenderOption = "DataGrid" | "List";
