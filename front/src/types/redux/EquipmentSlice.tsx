@@ -3,8 +3,8 @@ import { Equipment } from "../Equipements";
 
 export interface EquipmentSlice {
     isLoading: boolean,
-    equipments? : Array<Equipment> | [],
-    equipemntsFiltered :  Array<Equipment> | [],
+    equipments : Array<Equipment> | [],
+    equipmentsFiltered :  Array<Equipment> | [],
     IsSuccess? : boolean | null
   }
 
