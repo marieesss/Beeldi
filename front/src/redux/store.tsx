@@ -7,13 +7,11 @@ import { AppDispatch, RootState } from "../types/redux/EquipmentSlice";
 // Combine reducers to configure the store
 const store = configureStore({
   reducer: {
-    equipement: EquipmentSlice, 
-  }
-})
+    equipement: EquipmentSlice,
+  },
+});
 
-export const useAppDispatch = () => useDispatch<AppDispatch>() 
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector 
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-
-
-export default store
+export default store;
