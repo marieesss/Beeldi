@@ -14,8 +14,8 @@ export const EquipmentsSlice = createSlice({
   name: "equipments",
   initialState,
   reducers: {
-    filterEquipments(state, action: PayloadAction<string>){
-      const query = action.payload.toLowerCase()
+    filterEquipments(state, action: PayloadAction<string>) {
+      const query = action.payload.toLowerCase();
       // Filter to retrieve only object that match by name or domain
       state.equipmentsFiltered = state.equipments.filter(
         (equipment) =>
@@ -23,6 +23,8 @@ export const EquipmentsSlice = createSlice({
           equipment.domain.toLowerCase().includes(query),
       );
     },
+    // Reset the equipement array
+    // Used when there is no longer filter
     clearFilter(state) {
       state.equipmentsFiltered = initialState.equipmentsFiltered;
     },
