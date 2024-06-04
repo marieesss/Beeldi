@@ -1,4 +1,4 @@
-import { clearFilter, newFilter, removeOneFilter } from '../../redux/FilterSlice';
+import { newFilter, removeOneFilter } from '../../redux/FilterSlice';
 import { selectEquipments } from '../../redux/EquipmentSlice';
 import { Equipment } from '../../types/Equipements';
 import { useAppDispatch, useTypedSelector } from '../../redux/store';
@@ -26,7 +26,7 @@ const Filter = ({ filterKey }: { filterKey: keyof Equipment }) => {
   return (
     <>
     <InputLabel id="demo-multiple-name-label">{filterKey}</InputLabel>
-    <Select fullWidth placeholder={filterKey}  onChange={handleChange}>
+    <Select fullWidth placeholder={filterKey}  onChange={handleChange} defaultValue=''>
       <MenuItem value={""}>Default</MenuItem>
       {output.map((option: Equipment) => (
         <MenuItem key={option[filterKey] as string} value={option[filterKey]}>

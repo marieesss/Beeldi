@@ -52,7 +52,6 @@ const Datalist = ({ option }: { option: RenderOption }) => {
   useEffect(() => {
     const res = filterData(memoizedEquipments, filters, search);
     setFilteredData(res);
-    console.log(res);
   }, [memoizedEquipments, filters, search]);
 
   

@@ -12,13 +12,13 @@ const search = useTypedSelector(selectSearch)
   return (
     <div>
         {filters.map((filter)=>(
-        <Button variant="contained" endIcon={<CloseIcon />} onClick={()=>dispatch(removeOneFilter(filter.keyFilter))}>
+        <Button variant="contained" key={`${filter.keyFilter}-${filter.value}`} endIcon={<CloseIcon />} onClick={()=>dispatch(removeOneFilter(filter.keyFilter))}>
             {filter.keyFilter} :{filter.value }
           </Button>
         ))}
 
         {search.length > 0 &&
-                <Button variant="contained" endIcon={<CloseIcon />} onClick={()=>dispatch(clearSearch())}>
+                <Button variant="contained" key={`search-${search}`} endIcon={<CloseIcon />} onClick={()=>dispatch(clearSearch())}>
                 {search}
               </Button>
       }
