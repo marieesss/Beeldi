@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import CardContainer from './CardContainer';
 import { Equipment } from '../../types/Equipements';
+import { MemoryRouter } from 'react-router-dom';
+
 import {act} from 'react';
 
 
@@ -16,10 +18,10 @@ const mockData: Equipment[] = [
       brand: "Marque 1",
       model: "Modèle 1",
       serialNumber: "123456789",
-      quantity: "1",
+      quantity: 1,
       status: "Actif",
       notes: "Notes sur l'équipement 1",
-      nbFaults: "0",
+      nbFaults: 0,
     },
     {
       id: "2",
@@ -32,17 +34,20 @@ const mockData: Equipment[] = [
       brand: "Marque 2",
       model: "Modèle 2",
       serialNumber: "987654321",
-      quantity: "2",
+      quantity: 2,
       status: "Inactif",
       notes: "Notes sur l'équipement 2",
-      nbFaults: "1",
+      nbFaults: 1,
     },
   ];
 
 describe("CardContainer", () => {
     
     it("renders card container with equipment data", () => {
-      const { getByAltText, container } = render(<CardContainer data={mockData} />);
+      const { getByAltText, container } = render(
+        <MemoryRouter>
+          <CardContainer data={mockData} />
+      </MemoryRouter>);
         const CardOne = screen.getByTestId(`list-1`)
         const CardTwo = screen.getByTestId(`list-2`)
         const CardImages = container.querySelectorAll('img') 

@@ -18,11 +18,12 @@ const Datalist = ({ option }: { option: RenderOption }) => {
     {
       field: "photo",
       headerName: "Photo",
+      flex: 1,
       renderCell: (params) => <Avatar variant="square" alt={"image"} src={params.value} />,
     },
-    { field: "name", headerName: "Name" },
-    { field: "domain", headerName: "Domaine" },
-    { field: "nbFaults", headerName: "nbFaults" },
+    { field: "name", headerName: "Name" , flex: 1,},
+    { field: "domain", headerName: "Domaine" , flex: 1,},
+    { field: "nbFaults", headerName: "nbFaults" , flex: 1,},
     {
       field: "id",
       headerName: "",

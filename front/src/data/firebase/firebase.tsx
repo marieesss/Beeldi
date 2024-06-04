@@ -4,12 +4,12 @@ import "firebase/compat/database";
 import "firebase/compat/storage";
 
 const config = {
-  apiKey: "AIzaSyAIId2ByN9c0RX9_R71EbJJoV-lB1RDADc",
-  authDomain: "test-technique-beeldi.firebaseapp.com",
-  databaseURL: "https://test-technique-beeldi.firebaseio.com",
-  projectId: "test-technique-beeldi",
-  storageBucket: "test-technique-beeldi.appspot.com",
-  messagingSenderId: "937748581892",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId:process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
 
 if (!firebase.apps.length) {

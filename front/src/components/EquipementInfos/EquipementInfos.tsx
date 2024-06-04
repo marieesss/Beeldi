@@ -13,7 +13,7 @@ const EquipementInfos = ({ data }: { data: Equipment }) => {
         </li>
         <li key={data.quantity}>Quantité : {data.quantity}</li>
       </ul>
-      <h2>Charactériques de l'équipement</h2>
+      <h2>Caractériques de l'équipement</h2>
       <ul>
         <li key={data.model}>Model : {data.model}</li>
         <li key={data.domain}>Domain : {data.domain}</li>

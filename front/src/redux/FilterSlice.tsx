@@ -14,6 +14,9 @@ export const FilterSlice = createSlice({
     clearFilter(state) {
         state = initialState
     },
+    removeOneFilter(state, action: PayloadAction<string>) {
+      state.categories = state.categories.filter((categorie)=> categorie.keyFilter !== action.payload)
+  },
     clearSearch(state) {
         state.search = initialState.search;
       },
@@ -34,7 +37,7 @@ export const FilterSlice = createSlice({
 export const selectFilters = (state: RootState) =>state.filter.categories;
 export const selectSearch = (state: RootState) =>state.filter.search;
 
-export const { newFilter, clearFilter, newSearch, clearSearch} = FilterSlice.actions;
+export const { newFilter, clearFilter, newSearch, clearSearch, removeOneFilter} = FilterSlice.actions;
 
 
 export default FilterSlice.reducer;
