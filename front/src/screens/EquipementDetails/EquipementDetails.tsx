@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import EquipementsService from "../../data/services/EquipmentService";
 import { EquipmentDetails } from "../../types/Equipements";
 import { GridColDef } from "@mui/x-data-grid";
-import { Avatar } from "@mui/material";
 import GridContainer from "../../components/GridContainer/GridContainer";
 import EquipementInfos from "../../components/EquipementInfos/EquipementInfos";
 import { Checkpoint } from "../../types/Checkpoints";
+import "./EquipementDetails.css"
 
 const EquipementDetails = () => {
   const { id } = useParams();
@@ -31,7 +31,7 @@ const EquipementDetails = () => {
       field: "photo",
       headerName: "Photo",
       renderCell: (params) => (
-        <Avatar variant="square" alt={"image"} src={params.value} />
+        params.value && <img className="little-picture" alt={"checkpoints"} src={params.value} />
       ),
       flex: 1,
     },
@@ -71,10 +71,15 @@ const EquipementDetails = () => {
     <>
       {equipement ? (
         <div>
-          <img src={equipement.photo} alt="equipementPhoto" />
-          <EquipementInfos data={equipement} />
+          <div className="justify-content">
+          <img src={equipement.photo} alt="equipementPhoto" className={"photo"}/>
+            <EquipementInfos data={equipement} />
+          <div className="grid"> 
           {checkpoint && <GridContainer data={checkpoint} columns={columns} />}
+          </div >
         </div>
+        </div>
+
       ) : null}
     </>
   );
