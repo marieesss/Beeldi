@@ -15,10 +15,10 @@ const mockData: Equipment[] = [
       brand: "Marque 1",
       model: "Modèle 1",
       serialNumber: "123456789",
-      quantity: "1",
+      quantity: 1,
       status: "En marche",
       notes: "Notes sur l'équipement 1",
-      nbFaults: "0",
+      nbFaults: 0,
     },
     {
       id: "2",
@@ -31,10 +31,10 @@ const mockData: Equipment[] = [
       brand: "Marque 2",
       model: "Modèle 2",
       serialNumber: "987654321",
-      quantity: "2",
+      quantity: 2,
       status: "Inactif",
       notes: "Notes sur l'équipement 2",
-      nbFaults: "1",
+      nbFaults: 1,
     },
   ];
 
