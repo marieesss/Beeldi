@@ -24,7 +24,7 @@ const Filter = ({ filterKey }: { filterKey: keyof Equipment }) => {
   };
 
   return (
-    <Select fullWidth label="Status" defaultValue={""} onChange={handleChange}>
+    <Select fullWidth placeholder={filterKey}  onChange={handleChange}>
       <MenuItem value={""}>Default</MenuItem>
       {output.map((option: Equipment) => (
         <MenuItem key={option[filterKey] as string} value={option[filterKey]}>

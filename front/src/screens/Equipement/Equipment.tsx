@@ -5,10 +5,11 @@ import { getEquipments } from "../../redux/actions/Equipments";
 import { useAppDispatch, useTypedSelector } from "../../redux/store";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Datalist from "../../components/DataList/Datalist";
-import { Radio } from "@mui/material";
+import { Grid, Radio } from "@mui/material";
 import { RenderOption } from "../../types/Datalist";
 import { clearSearch, newSearch } from "../../redux/FilterSlice";
 import Filter from "../../components/Filter/Filter";
+import FilterButtons from "../../components/FilterButtons/FilterButtons";
 
 const EquipmentPage = () => {
   const dispatch = useAppDispatch();
@@ -42,9 +43,11 @@ const EquipmentPage = () => {
   return loading ? (
     <CircularProgress />
   ) : (
-    <div>
+    <Grid container spacing={2} padding={5}>
+       <Grid item xs={8}>
       <SearchBar handleValueChange={handleValueChanged} />
-      <>
+      </Grid>
+      <Grid item xs={4}>
         <label>
           <Radio
             checked={renderOption === "DataGrid"}
@@ -63,11 +66,20 @@ const EquipmentPage = () => {
           />
           Cards
         </label>
-      </>
+        </Grid>
+      <Grid item xs={2}>
       <Filter filterKey="status"/>
+      </Grid>
+      <Grid item xs={2}>
       <Filter filterKey="local"/>
+      </Grid>
+      <Grid item xs={10}>
+      <FilterButtons/>
+      </Grid>
+      <Grid item xs={12}>
       <Datalist option={renderOption} />
-    </div>
+      </Grid>
+      </Grid>
   );
 };
 

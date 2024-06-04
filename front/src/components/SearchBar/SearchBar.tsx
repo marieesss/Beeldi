@@ -18,6 +18,7 @@ const SearchBar = ({
         variant="outlined"
         placeholder="Search..."
         size="small"
+        fullWidth
       />
     </>
   );

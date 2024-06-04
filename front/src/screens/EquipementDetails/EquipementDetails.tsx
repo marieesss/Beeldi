@@ -7,6 +7,7 @@ import { Avatar } from "@mui/material";
 import GridContainer from "../../components/GridContainer/GridContainer";
 import EquipementInfos from "../../components/EquipementInfos/EquipementInfos";
 import { Checkpoint } from "../../types/Checkpoints";
+import "./EquipementDetails.css"
 
 const EquipementDetails = () => {
   const { id } = useParams();
@@ -71,8 +72,10 @@ const EquipementDetails = () => {
     <>
       {equipement ? (
         <div>
-          <img src={equipement.photo} alt="equipementPhoto" />
-          <EquipementInfos data={equipement} />
+          <div className="justify-content">
+          <img src={equipement.photo} alt="equipementPhoto" className={"photo"}/>
+            <EquipementInfos data={equipement} />
+          </div>
           {checkpoint && <GridContainer data={checkpoint} columns={columns} />}
         </div>
       ) : null}
