@@ -12,7 +12,8 @@ export const FilterSlice = createSlice({
   initialState,
   reducers: {
     clearFilter(state) {
-        state = initialState
+        state.categories = initialState.categories
+        state.search = initialState.search
     },
     removeOneFilter(state, action: PayloadAction<string>) {
       state.categories = state.categories.filter((categorie)=> categorie.keyFilter !== action.payload)

@@ -1,8 +1,8 @@
-import { clearFilter, newFilter } from '../../redux/FilterSlice';
+import { newFilter, removeOneFilter } from '../../redux/FilterSlice';
 import { selectEquipments } from '../../redux/EquipmentSlice';
 import { Equipment } from '../../types/Equipements';
 import { useAppDispatch, useTypedSelector } from '../../redux/store';
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
 const Filter = ({ filterKey }: { filterKey: keyof Equipment }) => {
   const equipments = useTypedSelector<Equipment[]>(selectEquipments);
@@ -19,12 +19,14 @@ const Filter = ({ filterKey }: { filterKey: keyof Equipment }) => {
     if (evt.target.value.length >= 1) {
       dispatch(newFilter({ value: evt.target.value, keyFilter: filterKey }));
     } else {
-      dispatch(clearFilter());
+      dispatch(removeOneFilter(filterKey))
     }
   };
 
   return (
-    <Select fullWidth placeholder={filterKey}  onChange={handleChange}>
+    <>
+    <InputLabel id="demo-multiple-name-label">{filterKey}</InputLabel>
+    <Select fullWidth placeholder={filterKey}  onChange={handleChange} defaultValue=''>
       <MenuItem value={""}>Default</MenuItem>
       {output.map((option: Equipment) => (
         <MenuItem key={option[filterKey] as string} value={option[filterKey]}>
@@ -32,6 +34,8 @@ const Filter = ({ filterKey }: { filterKey: keyof Equipment }) => {
         </MenuItem>
       ))}
     </Select>
+      </>
+
   );
 };
 
