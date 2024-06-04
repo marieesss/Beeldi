@@ -17,11 +17,11 @@ const EquipementInfos = ({ data }: { data: Equipment }) => {
       <ul>
         <li key={data.model}>Model : {data.model}</li>
         <li key={data.domain}>Domain : {data.domain}</li>
-        <li key={data.serialNumber}>
+        <li key={"serial Number"}>
           Numéro de série :{" "}
           {data.serialNumber ? data.serialNumber : "non referencé"}
         </li>
-        <li key={data.notes}>
+        <li key={"notes"}>
           Notes : {data.notes ? data.notes : "non referencé"}
         </li>
       </ul>
