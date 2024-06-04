@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import CardContainer from './CardContainer';
 import { Equipment } from '../../types/Equipements';
+import { MemoryRouter } from 'react-router-dom';
+
 import {act} from 'react';
 
 
@@ -42,7 +44,10 @@ const mockData: Equipment[] = [
 describe("CardContainer", () => {
     
     it("renders card container with equipment data", () => {
-      const { getByAltText, container } = render(<CardContainer data={mockData} />);
+      const { getByAltText, container } = render(
+        <MemoryRouter>
+          <CardContainer data={mockData} />
+      </MemoryRouter>);
         const CardOne = screen.getByTestId(`list-1`)
         const CardTwo = screen.getByTestId(`list-2`)
         const CardImages = container.querySelectorAll('img') 
