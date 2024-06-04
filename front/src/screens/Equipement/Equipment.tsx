@@ -71,6 +71,12 @@ const EquipmentPage = () => {
       <Filter filterKey="status"/>
       </Grid>
       <Grid item xs={2}>
+      <Filter filterKey={"niveau"}/>
+      </Grid>
+      <Grid item xs={2}>
+      <Filter filterKey={"model"}/>
+      </Grid>
+      <Grid item xs={2}>
       <Filter filterKey="local"/>
       </Grid>
       <Grid item xs={10}>
