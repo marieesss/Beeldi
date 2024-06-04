@@ -26,11 +26,13 @@ const EquipmentPage = () => {
 
   const [renderOption, setRenderOption] = useState<RenderOption>("DataGrid");
 
+  // Handle the change of data or list render option
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value: RenderOption = event.target.value as RenderOption;
     setRenderOption(value);
   };
 
+  // Handle search bar input change
   const handleValueChanged = (target: any) => {
     // If something is typed in search bar
     if (target.value.length >= 1) {
