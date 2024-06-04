@@ -32,7 +32,7 @@ const EquipementDetails = () => {
       field: "photo",
       headerName: "Photo",
       renderCell: (params) => (
-        <Avatar variant="square" alt={"image"} src={params.value} />
+        params.value && <img className="little-picture" alt={"image"} src={params.value} />
       ),
       flex: 1,
     },
@@ -75,9 +75,12 @@ const EquipementDetails = () => {
           <div className="justify-content">
           <img src={equipement.photo} alt="equipementPhoto" className={"photo"}/>
             <EquipementInfos data={equipement} />
-          </div>
+          <div className="grid"> 
           {checkpoint && <GridContainer data={checkpoint} columns={columns} />}
+          </div >
         </div>
+        </div>
+
       ) : null}
     </>
   );
