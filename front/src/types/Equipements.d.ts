@@ -10,10 +10,10 @@ export interface Equipment {
   brand: string;
   model: string;
   serialNumber: string;
-  quantity: number;
+  quantity: string;
   status: string;
   notes: string;
-  nbFaults: number;
+  nbFaults: string;
 }
 
 export interface EquipmentDetails extends Equipment {
