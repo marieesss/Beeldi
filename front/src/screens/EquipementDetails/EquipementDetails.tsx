@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EquipementsService from "../../data/services/EquipmentService";
 import { EquipmentDetails } from "../../types/Equipements";
@@ -24,7 +24,7 @@ const EquipementDetails = () => {
     if (id) {
       retrieveEquipementDetails(id);
     }
-  }, [retrieveEquipementDetails]);
+  }, [retrieveEquipementDetails, id]);
 
   const columns: GridColDef[] = [
     {
