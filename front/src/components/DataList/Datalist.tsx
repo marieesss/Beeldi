@@ -8,8 +8,11 @@ import CardContainer from "../CardContainer/CardContainer";
 import { Link } from "react-router-dom";
 import { selectFilters, selectSearch } from "../../redux/FilterSlice";
 import { filterData } from "../../utils/utils";
+import { useEffect, useState } from "react";
+import { Equipment } from "../../types/Equipements";
 
 const Datalist = ({ option }: { option: RenderOption }) => {
+  const [filteredData, setFilteredData] = useState<Equipment[]>([]);
   const equipments = useTypedSelector(selectEquipments) || [];
   const search = useTypedSelector(selectSearch);
   const filters = useTypedSelector(selectFilters);
@@ -44,7 +47,12 @@ const Datalist = ({ option }: { option: RenderOption }) => {
     },
   ];
 
-  const filteredData = filterData(equipments, filters, search)
+  useEffect(() => { 
+    const res =  filterData(equipments, filters, search)
+    setFilteredData(res)
+    console.log(res)
+  }, [equipments, filters, search]);
+
   
   return (
     <div>
