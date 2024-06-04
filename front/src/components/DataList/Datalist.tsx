@@ -1,26 +1,24 @@
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useTypedSelector } from "../../redux/store";
-import {
-  selectEquipments,
-  selectFilteredEquipments,
-} from "../../redux/EquipmentSlice";
+import { selectEquipments } from "../../redux/EquipmentSlice";
 import { Avatar, Button } from "@mui/material";
 import { RenderOption } from "../../types/Datalist";
 import GridContainer from "../GridContainer/GridContainer";
 import CardContainer from "../CardContainer/CardContainer";
 import { Link } from "react-router-dom";
+import { selectFilters, selectSearch } from "../../redux/FilterSlice";
+import { filterData } from "../../utils/utils";
 
 const Datalist = ({ option }: { option: RenderOption }) => {
   const equipments = useTypedSelector(selectEquipments) || [];
-  const equipmentsFiltered = useTypedSelector(selectFilteredEquipments) || [];
+  const search = useTypedSelector(selectSearch);
+  const filters = useTypedSelector(selectFilters);
 
   const columns: GridColDef[] = [
     {
       field: "photo",
       headerName: "Photo",
-      renderCell: (params) => (
-        <Avatar variant="square" alt={"image"} src={params.value} />
-      ),
+      renderCell: (params) => <Avatar variant="square" alt={"image"} src={params.value} />,
     },
     { field: "name", headerName: "Name" },
     { field: "domain", headerName: "Domaine" },
@@ -45,17 +43,16 @@ const Datalist = ({ option }: { option: RenderOption }) => {
     },
   ];
 
+  const filteredData = filterData(equipments, filters, search)
+  
   return (
     <div>
-      {option === "DataGrid" ? (
-        <GridContainer
-          columns={columns}
-          data={equipmentsFiltered.length > 0 ? equipmentsFiltered : equipments}
-        />
+      {filteredData.length < 1 ? 
+        <>No data</>
+      : option === "DataGrid" ? (
+        <GridContainer columns={columns} data={filteredData} />
       ) : (
-        <CardContainer
-          data={equipmentsFiltered.length > 0 ? equipmentsFiltered : equipments}
-        />
+        <CardContainer data={filteredData} />
       )}
     </div>
   );
