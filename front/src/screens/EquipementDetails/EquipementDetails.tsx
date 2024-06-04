@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import EquipementsService from "../../data/services/EquipmentService";
 import { EquipmentDetails } from "../../types/Equipements";
 import { GridColDef } from "@mui/x-data-grid";
-import { Avatar } from "@mui/material";
 import GridContainer from "../../components/GridContainer/GridContainer";
 import EquipementInfos from "../../components/EquipementInfos/EquipementInfos";
 import { Checkpoint } from "../../types/Checkpoints";
@@ -32,7 +31,7 @@ const EquipementDetails = () => {
       field: "photo",
       headerName: "Photo",
       renderCell: (params) => (
-        params.value && <img className="little-picture" alt={"image"} src={params.value} />
+        params.value && <img className="little-picture" alt={"checkpoints"} src={params.value} />
       ),
       flex: 1,
     },
